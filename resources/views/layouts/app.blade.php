@@ -33,12 +33,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('alerta') }}">{{ __('Ingresar Alerta') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('usuario') }}">{{ __('Ingresar Usuario') }}</a>
-                        </li>
+                        @php
+                            $verificationController= new \App\Http\Controllers\Auth\VerificationController();
+                            $usuario = $verificationController->getUserType();
+                        @endphp
+                        @if($usuario["type"]==1)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('ingreso-alerta') }}">{{ __('Publica tu Alerta') }}</a>
+                            </li>
+                        @endif
+                        @if($usuario["type"]==2)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('mostrar-alerta') }}">{{ __('Ver Alertas') }}</a>
+                            </li>
+                        @endif
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

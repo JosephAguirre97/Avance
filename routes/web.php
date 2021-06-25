@@ -32,7 +32,7 @@ Route::get("/actualizar-usuario/{id}",[UsuarioController::class,"mostrarUsuario"
 Route::post("/actualizar-usuario",[UsuarioController::class,"actualizar"]);
 Route::delete("/eliminar-usuario/{id}",[UsuarioController::class,"eliminar"])->name("eliminar");
 
-Route::view("/ingreso-alerta","ingresarAlerta");
+Route::view("/ingreso-alerta","ingresarAlerta")->name("ingreso-alerta");
 Route::post("/ingresar-alerta",[ComentarioAlertaController::class,"guardar"]);
 Route::get("/ingresar-alerta",function(){
     if (Auth::check()) {
@@ -42,7 +42,7 @@ Route::get("/ingresar-alerta",function(){
     }
 
 })->name("alerta");
-Route::get("/mostrar-alerta",[ComentarioAlertaController::class,"mostrar"]);
+Route::get("/mostrar-alerta",[ComentarioAlertaController::class,"mostrar"])->name("mostrar-alerta");
 Route::get("/actualizar-alerta/{id}",[ComentarioAlertaController::class,"mostrarAler"]);
 Route::post("/actualizar-alerta",[ComentarioAlertaController::class,"actualizar"]);
 Route::delete("/eliminar-alerta/{id}",[ComentarioAlertaController::class,"eliminar"])->name("eliminar");
